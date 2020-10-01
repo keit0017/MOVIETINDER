@@ -4,8 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+/*Keith Birongo Momanyi
+  01-10-2020
+  welcome to the login and signup page
+ */
+
 public class MainActivity extends AppCompatActivity {
-    //hey I feel good
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

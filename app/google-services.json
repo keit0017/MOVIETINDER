@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "721287266957",
+    "firebase_url": "https://flimdr.firebaseio.com",
+    "project_id": "flimdr",
+    "storage_bucket": "flimdr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721287266957:android:79892ed9739a2dbba658c4",
+        "android_client_info": {
+          "package_name": "com.example.movietinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721287266957-vpinoda9foum9fjb5ni64027299m53ho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiKckzkvNrUZf4-18TsvpWNL7y0Erc-IY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721287266957-vpinoda9foum9fjb5ni64027299m53ho.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
