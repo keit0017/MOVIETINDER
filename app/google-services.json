@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "721287266957-cb421de8v984t2e3k1iqt2gb792d5m97.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.movietinder",
+            "certificate_hash": "31d5f04b7217badc57f8753411060775e6ad390b"
+          }
+        },
+        {
           "client_id": "721287266957-vpinoda9foum9fjb5ni64027299m53ho.apps.googleusercontent.com",
           "client_type": 3
         }
