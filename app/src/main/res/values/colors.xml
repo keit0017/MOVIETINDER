@@ -4,7 +4,9 @@
     <color name="colorPrimaryDark">#000</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="backlitcolor">#ba0202</color>
+    <color name="backlitcolor">#FE3A00</color>
     <color name="black">#000</color>
+    <color name="backgrey">#222221</color>
+    <color name="goodwithwhite">#b6aca2</color>
 
 </resources>
