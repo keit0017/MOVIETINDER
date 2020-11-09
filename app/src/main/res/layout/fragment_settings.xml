@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".settings"
-    android:background="@color/backgrey">
+    android:background="@color/black">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -67,6 +67,7 @@
                     android:id="@+id/imageView2"
                     android:layout_width="65dp"
                     android:layout_height="56dp"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
