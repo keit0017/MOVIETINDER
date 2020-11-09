@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/backgrey">
+    android:background="@color/colorPrimary"
+    >
 
 
     <FrameLayout
@@ -17,16 +18,15 @@
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation" >
 
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:text="To find new movies click ''find movies''. To like a movie swipe right"
-            android:fontFamily=""
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="15dp" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </FrameLayout>

@@ -10,9 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +35,10 @@ public class addnew extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    ArrayList<Movie> likedmoviesList;
+    ListView likedmoviesview;
+    private MovieAdapter mCardAdapter;
+    GlovVal globalmovie = GlovVal.getInstance();
 
     public addnew() {
         // Required empty public constructor
@@ -61,19 +70,42 @@ public class addnew extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        likedmoviesList=globalmovie.getMovie1ArrayList();
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_addnew, container, false);
+        View v= inflater.inflate(R.layout.fragment_addnew, container, false);
+
+        Makemovies();
+
+
+        likedmoviesview = (ListView) v.findViewById(R.id.likedmovielistview);
+
+
+        mCardAdapter = new MovieAdapter(this.getActivity(),likedmoviesList);
+        likedmoviesview.setAdapter(mCardAdapter);
+        return v;
+    }
+
+    void Makemovies(){
 
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+
+
 
     }
 }

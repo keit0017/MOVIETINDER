@@ -27,6 +27,7 @@ public class settings extends Fragment {
     private String mParam1;
     private String mParam2;
     Button signout,deleteaccount;
+    Movie setMovie;
 
     public settings() {
         // Required empty public constructor

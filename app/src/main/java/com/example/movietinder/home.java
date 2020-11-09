@@ -1,18 +1,25 @@
 package com.example.movietinder;
 
+import android.content.Context;
+import android.content.Intent;
+import android.media.midi.MidiOutputPort;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 import com.wenchao.cardstack.CardAnimator;
 import com.wenchao.cardstack.CardStack;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,13 +28,16 @@ import java.util.ArrayList;
  * Use the {@link home#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class home extends Fragment {
+public class home extends Fragment implements CardStack.CardEventListener{
     //adapter således jeg kan få swipe funktionen til at fungere.
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    GlovVal globmov = GlovVal.getInstance();
+
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -36,7 +46,7 @@ public class home extends Fragment {
     private CardAdapter mCardAdapter;
     public static ArrayList<Movie> likedmovies= new ArrayList<>();
     public static ArrayList<Movie> movies= new ArrayList<>();
-    SwipeListener swipeListener;
+
 
     public home() {
         // Required empty public constructor
@@ -74,32 +84,55 @@ public class home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (container == null) {
+            return null;
+        }
+
+        likedmovies = new ArrayList<Movie>();
+
+        View v = inflater.inflate(R.layout.fragment_home, container, false);
+
+        mCardStack = (CardStack) v.findViewById(R.id.container);
+        mCardStack.setContentResource(R.layout.card_layout);
+        createmovies();
+
+        mCardAdapter = new CardAdapter(this.getActivity(),movies);
+        mCardStack.setAdapter(mCardAdapter);
+
 
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return v;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //      mCardStack.setStackMargin(20);
 
-        mCardStack = (CardStack) getView().findViewById(R.id.container);
+    }
 
-
-        mCardStack.setContentResource(R.layout.card_layout);
-//      mCardStack.setStackMargin(20);
-        createmovies();
-        mCardAdapter = new CardAdapter(this.getActivity(),movies);
-        mCardStack.setAdapter(mCardAdapter);
-
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
 
         if (mCardStack.getAdapter() != null) {
             Log.i("MyActivity", "Card Stack size: " + mCardStack.getAdapter().getCount());
         }
-
     }
 
     void createmovies(){
@@ -145,9 +178,38 @@ public class home extends Fragment {
         movies.add(film17);
         movies.add(film19);
 
+
+        globmov.setMovie1ArrayList(movies);
+
+
     }
 
 
+    @Override
+    public boolean swipeEnd(int i, float v) {
 
+        Log.v("totalResults", String.valueOf(movies));
+        return i > 200;
+    }
 
+    @Override
+    public boolean swipeStart(int i, float v) {
+        return false;
+    }
+
+    @Override
+    public boolean swipeContinue(int i, float v, float v1) {
+        return false;
+    }
+
+    @Override
+    public void discarded(int i, int i1) {
+        Log.v("test", "pikimund");
+
+    }
+
+    @Override
+    public void topCardTapped() {
+
+    }
 }

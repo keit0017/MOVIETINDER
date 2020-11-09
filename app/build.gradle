@@ -59,6 +59,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics'
     implementation 'com.google.firebase:firebase-analytics'
 
+    //letsgo
+    implementation 'com.lorentzos.swipecards:library:1.0.9'
+    implementation "androidx.cardview:cardview:1.0.0"
+
 
     //for swipe functionality
 

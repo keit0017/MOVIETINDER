@@ -3,16 +3,16 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_outline_settings_24"
-        android:title="settings" />
+        android:title="Settings"/>
 
     <item
         android:id="@+id/navigation_likedmovies"
-        android:icon="@drawable/coolhat2"
-        android:title="find movies" />
+        android:icon="@drawable/hotornot"
+        android:title="Find movies" />
 
     <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/liked"
-        android:title="liked movies" />
+        android:title="Liked movies" />
 
 </menu>
