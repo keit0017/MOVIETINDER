@@ -23,6 +23,7 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:text="To find new movies click ''find movies''. To like a movie swipe right"
+            android:fontFamily=""
             android:textAlignment="center"
             android:textColor="@color/colorWhite"
             android:textSize="15dp" />

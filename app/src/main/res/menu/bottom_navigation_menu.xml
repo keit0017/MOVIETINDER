@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/navigation_likedmovies"
-        android:icon="@drawable/ic_outline_movie_24"
+        android:icon="@drawable/coolhat2"
         android:title="find movies" />
 
     <item
