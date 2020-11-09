@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#000</color>
-    <color name="colorPrimaryDark">#000</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorPrimary">#202120</color>
+    <color name="colorPrimaryDark">#4E83B1</color>
+    <color name="colorAccent">#EEF0F0</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="backlitcolor">#FE3A00</color>
-    <color name="black">#000</color>
-    <color name="backgrey">#222221</color>
-    <color name="goodwithwhite">#b6aca2</color>
+    <color name="backlitcolor">#4E83B1</color>
+    <color name="backlitcolorclick">#D89D8B</color>
+    <color name="black">#202120</color>
+    <color name="backgrey">#719CC1</color>
+    <color name="goodwithwhite">#719CC1</color>
 
 </resources>

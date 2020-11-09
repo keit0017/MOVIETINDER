@@ -38,6 +38,7 @@
         android:layout_height="88dp"
         android:layout_gravity="bottom"
         app:itemBackground="@color/colorPrimary"
+        android:background="@color/colorPrimary"
         app:itemIconTint="@color/backlitcolor"
         app:itemTextColor="@color/backlitcolor"
         app:labelVisibilityMode="labeled"
