@@ -13,6 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.Salsa.model.GlovVal;
+import com.example.Salsa.model.Movie;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -20,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
-public class Login extends AppCompatActivity {
+public class LoginAkt extends AppCompatActivity {
     Button gotomain;
     TextView gotosignup;
     EditText emailuser, passworduser;
@@ -42,7 +44,7 @@ public class Login extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(Login.this, MainActivity.class));
+            startActivity(new Intent(LoginAkt.this, MainActivity.class));
             finish();
         }
 
@@ -56,7 +58,7 @@ public class Login extends AppCompatActivity {
 
 
         final Intent gomain = new Intent(this, MainActivity.class);
-        final Intent gosignup = new Intent(this, Register.class);
+        final Intent gosignup = new Intent(this, RegisterAkt.class);
 
         gotomain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +80,7 @@ public class Login extends AppCompatActivity {
 
                 //authentication
                 auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(LoginAkt.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 // If sign in fails, display a message to the user. If sign in succeeds
@@ -90,10 +92,10 @@ public class Login extends AppCompatActivity {
                                     if (password.length() < 6) {
                                         passworduser.setError("Password too short, enter minimum 6 characters!");
                                     } else {
-                                        Toast.makeText(Login.this, "Authentication failed", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(LoginAkt.this, "Authentication failed", Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(Login.this, MainActivity.class);
+                                    Intent intent = new Intent(LoginAkt.this, MainActivity.class);
                                     startActivity(intent);
                                 }
                             }

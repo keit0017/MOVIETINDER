@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.Salsa.model.GlovVal;
+import com.example.Salsa.model.Movie;
 import com.wenchao.cardstack.CardStack;
 import android.util.Log;
 
@@ -19,10 +21,10 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link home#newInstance} factory method to
+ * Use the {@link HomeFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class home extends Fragment implements CardStack.CardEventListener{
+public class HomeFrag extends Fragment implements CardStack.CardEventListener{
     //adapter således jeg kan få swipe funktionen til at fungere.
 
     // TODO: Rename parameter arguments, choose names that match
@@ -42,7 +44,7 @@ public class home extends Fragment implements CardStack.CardEventListener{
     public static ArrayList<Movie> movies= new ArrayList<>();
 
 
-    public home() {
+    public HomeFrag() {
         // Required empty public constructor
     }
 
@@ -55,8 +57,8 @@ public class home extends Fragment implements CardStack.CardEventListener{
      * @return A new instance of fragment home.
      */
     // TODO: Rename and change types and number of parameters
-    public static home newInstance(String param1, String param2) {
-        home fragment = new home();
+    public static HomeFrag newInstance(String param1, String param2) {
+        HomeFrag fragment = new HomeFrag();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -90,7 +92,7 @@ public class home extends Fragment implements CardStack.CardEventListener{
         mCardStack.setContentResource(R.layout.card_layout);
         mCardAdapter = new CardAdapter(this.getActivity(),movies);
         mCardStack.setAdapter(mCardAdapter);
-        mCardStack.setListener(home.this);
+        mCardStack.setListener(HomeFrag.this);
 
 
 
@@ -166,7 +168,6 @@ public class home extends Fragment implements CardStack.CardEventListener{
     }
 
     public class MoviesandSwipeAsync extends AsyncTask<Void,Void,ArrayList<Movie>>{
-
         @Override
         protected ArrayList<Movie> doInBackground(Void... voids) {
             return null;

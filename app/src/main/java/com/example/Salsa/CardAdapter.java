@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.Salsa.model.Movie;
+
 import java.util.ArrayList;
 
 public class CardAdapter extends ArrayAdapter<Movie> {

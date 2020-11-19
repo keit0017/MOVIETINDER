@@ -1,4 +1,4 @@
-package com.example.Salsa;
+package com.example.Salsa.model;
 
 public class Movie {
     private String movietitle, description;

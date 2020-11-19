@@ -18,7 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Register extends AppCompatActivity {
+public class RegisterAkt extends AppCompatActivity {
     Button gotomain;
     TextView gotologin;
     EditText emailuser, passworduser, passworduserconfirm, username;
@@ -45,7 +45,7 @@ public class Register extends AppCompatActivity {
         gotologin = findViewById(R.id.login);
 
         final Intent gomain = new Intent(this, MainActivity.class);
-        final Intent gosignup = new Intent(this, Login.class);
+        final Intent gosignup = new Intent(this, LoginAkt.class);
 
         //nu laver vi en onclick listener hvor vi laver registreringen.
         gotomain.setOnClickListener(new View.OnClickListener() {
@@ -80,19 +80,19 @@ public class Register extends AppCompatActivity {
 
                 //opretter brugeren.
                 auth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(RegisterAkt.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                Toast.makeText(Register.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterAkt.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
                                 // signed in user can be handled in the listener.
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(Register.this, "Authentication failed." + task.getException(),
+                                    Toast.makeText(RegisterAkt.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    startActivity(new Intent(Register.this, MainActivity.class));
+                                    startActivity(new Intent(RegisterAkt.this, MainActivity.class));
                                     finish();
                                 }
                             }

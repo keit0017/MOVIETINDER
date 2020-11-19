@@ -9,14 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.Salsa.model.Movie;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link settings#newInstance} factory method to
+ * Use the {@link SettingsFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class settings extends Fragment {
+public class SettingsFrag extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,7 +30,7 @@ public class settings extends Fragment {
     Button signout,deleteaccount;
     Movie setMovie;
 
-    public settings() {
+    public SettingsFrag() {
         // Required empty public constructor
     }
 
@@ -42,8 +43,8 @@ public class settings extends Fragment {
      * @return A new instance of fragment settings.
      */
     // TODO: Rename and change types and number of parameters
-    public static settings newInstance(String param1, String param2) {
-        settings fragment = new settings();
+    public static SettingsFrag newInstance(String param1, String param2) {
+        SettingsFrag fragment = new SettingsFrag();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

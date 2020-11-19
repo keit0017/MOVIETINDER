@@ -1,8 +1,8 @@
-package com.example.Salsa;
+package com.example.Salsa.model;
 
 import java.util.ArrayList;
 
-class GlovVal {
+public class GlovVal {
 
     public static ArrayList<Movie> movie1ArrayList;
     public static ArrayList<Movie> likedmovie;

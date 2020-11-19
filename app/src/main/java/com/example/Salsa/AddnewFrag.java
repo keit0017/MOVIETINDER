@@ -12,14 +12,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.Salsa.model.GlovVal;
+import com.example.Salsa.model.Movie;
+
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link addnew#newInstance} factory method to
+ * Use the {@link AddnewFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class addnew extends Fragment {
+public class AddnewFrag extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,7 +38,7 @@ public class addnew extends Fragment {
     private MovieAdapter mCardAdapter;
     GlovVal globalmovie = GlovVal.getInstance();
 
-    public addnew() {
+    public AddnewFrag() {
         // Required empty public constructor
     }
 
@@ -48,8 +51,8 @@ public class addnew extends Fragment {
      * @return A new instance of fragment addnew.
      */
     // TODO: Rename and change types and number of parameters
-    public static addnew newInstance(String param1, String param2) {
-        addnew fragment = new addnew();
+    public static AddnewFrag newInstance(String param1, String param2) {
+        AddnewFrag fragment = new AddnewFrag();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

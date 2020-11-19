@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.Salsa.model.Movie;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.view.GestureDetector;
@@ -56,14 +57,14 @@ public class MainActivity extends AppCompatActivity{
 
                     switch (item.getItemId()){
                         case R.id.navigation_home:
-                            selectedfragment = new settings();
+                            selectedfragment = new SettingsFrag();
                             break;
 
                         case R.id.navigation_likedmovies:
-                            selectedfragment = new home();
+                            selectedfragment = new HomeFrag();
                             break;
                         case R.id.navigation_settings:
-                            selectedfragment = new addnew();
+                            selectedfragment = new AddnewFrag();
 
                             break;
                     }
