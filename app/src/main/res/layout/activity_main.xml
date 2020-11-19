@@ -25,7 +25,19 @@
             android:layout_height="match_parent">
 
 
-
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="242dp"
+                android:layout_height="107dp"
+                android:lineSpacingExtra="8sp"
+                android:text="Welcome to Salsa! We recommend the best movies for you, click the fire icon to begin"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="230dp"
     app:cardCornerRadius="40dp"
+    android:background="@color/black"
     >
 
 
@@ -22,24 +23,27 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary">
 
             <ImageView
                 android:id="@+id/likedpictureList"
-                android:layout_width="197dp"
-                android:layout_height="201dp"
+                android:layout_width="187dp"
+                android:layout_height="166dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/descriptionmovieList"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.571"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.47" />
 
             <TextView
                 android:id="@+id/descriptionmovieList"
                 android:layout_width="160dp"
                 android:layout_height="51dp"
                 android:text="TextView"
+                android:textColor="@color/colorWhite"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.856"
@@ -51,9 +55,10 @@
                 android:id="@+id/movietitleList"
                 android:layout_width="196dp"
                 android:layout_height="51dp"
+
                 android:scaleType="centerCrop"
                 android:text="TextView"
-                android:textColor="@color/black"
+                android:textColor="@color/colorWhite"
                 android:textSize="30dp"
                 app:layout_constraintBottom_toTopOf="@+id/descriptionmovieList"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/home2"
-        android:name="com.example.movietinder.home"
+        android:name="com.example.Salsa.home"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/settings"
-        android:name="com.example.movietinder.settings"
+        android:name="com.example.Salsa.settings"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/addnew"
-        android:name="com.example.movietinder.addnew"
+        android:name="com.example.Salsa.addnew"
         android:label="fragment_addnew"
         tools:layout="@layout/fragment_addnew" />
 </navigation>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "685120850055",
+    "firebase_url": "https://salsa-cbcbe.firebaseio.com",
+    "project_id": "salsa-cbcbe",
+    "storage_bucket": "salsa-cbcbe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685120850055:android:f2a0616117f825409bd022",
+        "android_client_info": {
+          "package_name": "com.Something.Salsa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685120850055-n6ch65mn39aie07k0n8eu4fpb017a77l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmkPy6gO6gbUgvpmHQN253oWPEB8ne0mQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "685120850055-n6ch65mn39aie07k0n8eu4fpb017a77l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
