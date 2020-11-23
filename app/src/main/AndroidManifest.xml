@@ -15,15 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AddFilmActivity"></activity>
-        <activity android:name="com.example.com.Something.Salsa.Register" />
-        <activity android:name="com.example.com.Something.Salsa.Login">
+        <activity android:name="com.example.Salsa.RegisterAkt" />
+        <activity android:name="com.example.Salsa.LoginAkt">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.com.Something.Salsa.MainActivity"></activity>
+        <activity android:name="com.example.Salsa.MainActivity"></activity>
     </application>
 
 </manifest>

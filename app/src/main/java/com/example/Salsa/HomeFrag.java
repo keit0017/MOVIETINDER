@@ -16,6 +16,7 @@ import com.example.Salsa.model.GlovVal;
 import com.example.Salsa.model.Movie;
 import com.wenchao.cardstack.CardStack;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -158,7 +159,9 @@ public class HomeFrag extends Fragment implements CardStack.CardEventListener{
         movies=GlovVal.getMovie1ArrayList();
 
         if(i1==1 || i1==3){
-           GlovVal.addLikedmovie(mCardAdapter.currentMovie);
+             Toast.makeText(getActivity(), "swipe right on"+mCardAdapter.currentMovie.getMovietitle(), Toast.LENGTH_SHORT).show();
+        } else{
+            Toast.makeText(getActivity(), "swipe left", Toast.LENGTH_SHORT).show();
         }
     }
 
