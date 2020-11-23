@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "721287266957",
-    "firebase_url": "https://flimdr.firebaseio.com",
-    "project_id": "flimdr",
-    "storage_bucket": "flimdr.appspot.com"
+    "project_number": "1076567426140",
+    "firebase_url": "https://salsa-874d7.firebaseio.com",
+    "project_id": "salsa-874d7",
+    "storage_bucket": "salsa-874d7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:721287266957:android:79892ed9739a2dbba658c4",
+        "mobilesdk_app_id": "1:1076567426140:android:cd7fa325db92b80b9b9299",
         "android_client_info": {
-          "package_name": "com.example.movietinder"
+          "package_name": "com.Something.Salsa"
         }
       },
       "oauth_client": [
         {
-          "client_id": "721287266957-cb421de8v984t2e3k1iqt2gb792d5m97.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.movietinder",
-            "certificate_hash": "31d5f04b7217badc57f8753411060775e6ad390b"
-          }
-        },
-        {
-          "client_id": "721287266957-vpinoda9foum9fjb5ni64027299m53ho.apps.googleusercontent.com",
+          "client_id": "1076567426140-74f0iq9a1r77th2pdou3vsb5v7prfj6h.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBiKckzkvNrUZf4-18TsvpWNL7y0Erc-IY"
+          "current_key": "AIzaSyDUgQ4dafNcqVyXvXNfed0fsC3q_kZ5F7o"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "721287266957-vpinoda9foum9fjb5ni64027299m53ho.apps.googleusercontent.com",
+              "client_id": "1076567426140-74f0iq9a1r77th2pdou3vsb5v7prfj6h.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
