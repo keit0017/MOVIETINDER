@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
@@ -35,11 +37,14 @@ public class AddFilmActivity extends AppCompatActivity {
 
     private Button mButtonChooseImage;
     private Button mButtonUploadImage;
+
     private TextView mTextviewshowMovies;
     private EditText mEditmovietitle;
     private EditText mEditmoviedescription;
     private ImageView mDisplayImage;
     private ProgressBar mprogressbar;
+
+    private StorageTask mUploadTask;
 
 
     private Uri mImageURI;
@@ -77,8 +82,14 @@ public class AddFilmActivity extends AppCompatActivity {
         mButtonUploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("button", "upload button connected");
-                uploadMovie();
+                ;
+
+                if(mUploadTask != null && mUploadTask.isInProgress()){
+                    Log.i("button", "upload button connected");
+                } else {
+                    uploadMovie();
+                }
+
             }
         });
 
@@ -110,6 +121,51 @@ public class AddFilmActivity extends AppCompatActivity {
                     getimageExtention(mImageURI));
 
             Log.i("Fileref; ",fileref.toString());
+
+            mUploadTask = fileref.putFile(mImageURI)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                            Handler handler1 = new Handler();
+                            handler1.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mprogressbar.setProgress(0);
+                                }}, 500);
+
+                            //Uploading the movie to the database.
+                            if (taskSnapshot.getMetadata() != null) {
+                                if (taskSnapshot.getMetadata().getReference() != null) {
+                                    Task<Uri> result = taskSnapshot.getStorage().getDownloadUrl();
+                                    result.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+
+                                            Upload upload = new Upload(mEditmovietitle.getText().toString().trim(),
+                                                    mEditmoviedescription.getText().toString().trim(),uri.toString());
+
+                                            String uploadID = mDatabaseRef.push().getKey();
+                                            mDatabaseRef.child(uploadID).setValue(upload);
+                                            //createNewPost(imageUrl);
+                                        }
+                                    });
+                                }
+                            }
+
+
+
+
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+
+                            double progress =(100 * snapshot.getBytesTransferred()/snapshot.getTotalByteCount());
+                            mprogressbar.setProgress((int) progress);
+                        }
+                    });
 
 
 
