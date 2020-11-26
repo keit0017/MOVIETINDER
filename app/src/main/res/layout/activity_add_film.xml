@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddFilmActivity">
+    tools:context=".AddFilmActivity"
+    android:background="@color/black">
 
     <Button
         android:id="@+id/choosefilebutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="117dp"
+        android:layout_height="57dp"
+        android:background="@drawable/roundedbutton"
         android:text="Add image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/UploadButton"
@@ -20,15 +22,16 @@
 
     <Button
         android:id="@+id/UploadButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="121dp"
+        android:layout_height="54dp"
+        android:background="@drawable/roundedbutton"
         android:text="Upload"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintHorizontal_bias="0.758"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextmoviedescription"
-        app:layout_constraintVertical_bias="0.146" />
+        app:layout_constraintVertical_bias="0.152" />
 
     <EditText
         android:id="@+id/editTextTextmoviedescription"
@@ -38,6 +41,8 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        android:padding="16dip"
+        android:background="@drawable/roundend"
         android:hint="Beskriv filmen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,6 +59,8 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Film titel"
+        android:padding="16dip"
+        android:background="@drawable/roundend"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -65,7 +72,8 @@
         android:id="@+id/Showsalsaatextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Se film udvalg"
+        android:text="Swipe more"
+        android:visibility="invisible"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,15 +83,18 @@
 
     <ProgressBar
         android:id="@+id/progressBar3Uploadingmovie"
-        style="@android:style/Widget.ProgressBar.Horizontal"
+        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="40dp"
+        android:paddingHorizontal="100dp"
+
         app:layout_constraintBottom_toTopOf="@+id/editmovietitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MovieposterUpload"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/backlitcolor"
         />
 
     <ImageView
