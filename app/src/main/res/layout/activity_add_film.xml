@@ -12,6 +12,7 @@
         android:layout_width="117dp"
         android:layout_height="57dp"
         android:background="@drawable/roundedbutton"
+        android:fontFamily="@font/montserrat"
         android:text="Add image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/UploadButton"
@@ -25,6 +26,7 @@
         android:layout_width="121dp"
         android:layout_height="54dp"
         android:background="@drawable/roundedbutton"
+        android:fontFamily="@font/montserrat"
         android:text="Upload"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,38 +37,39 @@
 
     <EditText
         android:id="@+id/editTextTextmoviedescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="261dp"
+        android:layout_height="61dp"
         android:layout_marginBottom="128dp"
+        android:background="@color/colorWhite"
         android:ems="10"
+        android:fontFamily="@font/montserrat"
         android:gravity="start|top"
+        android:hint="Beskriv filmen"
         android:inputType="textMultiLine"
         android:padding="16dip"
-        android:background="@drawable/roundend"
-        android:hint="Beskriv filmen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editmovietitle"
-        app:layout_constraintVertical_bias="0.22" />
+        app:layout_constraintVertical_bias="0.299" />
 
     <EditText
         android:id="@+id/editmovietitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Film titel"
-        android:padding="16dip"
         android:background="@drawable/roundend"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="Film titel"
+        android:inputType="textPersonName"
+        android:padding="16dip"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MovieposterUpload"
-        app:layout_constraintVertical_bias="0.033" />
+        app:layout_constraintVertical_bias="0.011" />
 
     <TextView
         android:id="@+id/Showsalsaatextview"
@@ -107,5 +110,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/latehat" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Tilføj film"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="@+id/MovieposterUpload"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.067" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

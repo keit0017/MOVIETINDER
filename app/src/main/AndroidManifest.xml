@@ -14,16 +14,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddFilmActivity"></activity>
-        <activity android:name="com.example.Salsa.RegisterAkt" />
-        <activity android:name="com.example.Salsa.LoginAkt">
+        <activity android:name=".ChatAkt"></activity>
+        <activity android:name=".AddFilmActivity" />
+        <activity android:name=".RegisterAkt" />
+        <activity android:name=".LoginAkt">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.Salsa.MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

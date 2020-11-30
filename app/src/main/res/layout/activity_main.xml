@@ -29,6 +29,7 @@
                 android:id="@+id/textView"
                 android:layout_width="242dp"
                 android:layout_height="107dp"
+                android:fontFamily="@font/montserrat"
                 android:lineSpacingExtra="8sp"
                 android:text="Welcome to Salsa! We recommend the best movies for you, click the fire icon to begin"
                 android:textAlignment="center"

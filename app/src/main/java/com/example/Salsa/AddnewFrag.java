@@ -1,21 +1,36 @@
 package com.example.Salsa;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.Salsa.model.GlovVal;
 import com.example.Salsa.model.Movie;
+import com.example.Salsa.model.Upload;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,9 +48,11 @@ public class AddnewFrag extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    ArrayList<Movie> likedmoviesList;
-    ListView likedmoviesview;
-    private MovieAdapter mCardAdapter;
+    List<Upload> mLikedmoviesList;
+    RecyclerView likedmoviesview;
+    private FirebaseUser user;
+    private DatabaseReference mDatabaseRefLikedMovies;
+    private LikedMoviesAdapter mCardAdapter;
     GlovVal globalmovie = GlovVal.getInstance();
 
     public AddnewFrag() {
@@ -68,10 +85,6 @@ public class AddnewFrag extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        likedmoviesList=globalmovie.getMovie1ArrayList();
-
-
     }
 
     @Override
@@ -82,28 +95,45 @@ public class AddnewFrag extends Fragment {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_addnew, container, false);
 
-        Makemovies();
+        likedmoviesview = (RecyclerView) v.findViewById(R.id.movieRecyclerView);
+        likedmoviesview.hasFixedSize();
+        likedmoviesview.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
+        mLikedmoviesList = new ArrayList<>();
 
-        likedmoviesview = (ListView) v.findViewById(R.id.likedmovielistview);
+        final Context currentContext = this.getActivity();
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
-        mCardAdapter = new MovieAdapter(this.getActivity(),likedmoviesList);
-        likedmoviesview.setAdapter(mCardAdapter);
+        String userID = user.getUid();
+
+        mDatabaseRefLikedMovies= FirebaseDatabase.getInstance().getReference("LikedFilms/"+userID);
+
+        mDatabaseRefLikedMovies.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot snapshot1 : snapshot.getChildren()){
+                        Upload upload = snapshot1.getValue(Upload.class);
+                        mLikedmoviesList.add(upload);
+                        Log.v("Imageuploaded",upload.getImageURi());
+                    }
+                    mCardAdapter = new LikedMoviesAdapter(currentContext,mLikedmoviesList);
+                    likedmoviesview.setAdapter(mCardAdapter);
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(getActivity(),error.getMessage(),Toast.LENGTH_LONG).show();;
+                }
+            });
         return v;
     }
 
-    void Makemovies(){
-
-    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
-
-
 
     }
 }

@@ -37,6 +37,8 @@ public class Upload {
         return mTitle;
     }
 
+    public String getUrl(){ return getImageURi().toString();}
+
     public void setImageURi(String imageURi) {
         ImageURi1 = imageURi;
     }

@@ -7,41 +7,17 @@
     tools:context=".AddnewFrag"
     android:background="@color/black">
 
-    <!-- TODO: Update blank fragment layout -->
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="bottom">
+        android:orientation="horizontal">
 
-        <ListView
-            android:id="@+id/likedmovielistview"
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="596dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0">
+            android:layout_height="match_parent"
+            android:id="@+id/movieRecyclerView"/>
 
+    </RelativeLayout>
 
-        </ListView>
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toTopOf="@+id/likedmovielistview"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.413" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

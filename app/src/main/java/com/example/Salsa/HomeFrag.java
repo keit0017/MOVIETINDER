@@ -1,6 +1,9 @@
 package com.example.Salsa;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -8,14 +11,30 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.Salsa.model.GlovVal;
 import com.example.Salsa.model.Movie;
+import com.example.Salsa.model.Upload;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.wenchao.cardstack.CardStack;
 import android.util.Log;
+import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -33,6 +52,7 @@ public class HomeFrag extends Fragment implements CardStack.CardEventListener{
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     GlovVal globmov = GlovVal.getInstance();
+    private DatabaseReference mDatabaseref;
 
 
 
@@ -41,8 +61,9 @@ public class HomeFrag extends Fragment implements CardStack.CardEventListener{
     private String mParam2;
     private CardStack mCardStack;
     private CardAdapter mCardAdapter;
+
     public static ArrayList<Movie> likedmovies= new ArrayList<>();
-    public static ArrayList<Movie> movies= new ArrayList<>();
+    public static ArrayList<Upload> movies= new ArrayList<>();
 
 
     public HomeFrag() {
@@ -85,15 +106,38 @@ public class HomeFrag extends Fragment implements CardStack.CardEventListener{
             return null;
         }
 
-        movies= GlovVal.getMovie1ArrayList();
+
 
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
         mCardStack = (CardStack) v.findViewById(R.id.container);
         mCardStack.setContentResource(R.layout.card_layout);
         mCardAdapter = new CardAdapter(this.getActivity(),movies);
-        mCardStack.setAdapter(mCardAdapter);
-        mCardStack.setListener(HomeFrag.this);
+
+        mDatabaseref = FirebaseDatabase.getInstance().getReference("uploads");
+
+        mDatabaseref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot snapshot1 : snapshot.getChildren()){
+                    Upload upload = snapshot1.getValue(Upload.class);
+                    movies.add(upload);
+                    Log.v("Imageuploaded",upload.getImageURi());
+                }
+
+                mCardStack.setAdapter(mCardAdapter);
+                mCardStack.setListener(HomeFrag.this);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(),error.getMessage(),Toast.LENGTH_LONG).show();;
+            }
+        });
+
+
+
 
 
 
@@ -155,11 +199,12 @@ public class HomeFrag extends Fragment implements CardStack.CardEventListener{
     public void discarded(int i, int i1) {
         Log.v("test", "pikimund");
 
-        GlovVal.removemovie(mCardAdapter.currentMovie);
-        movies=GlovVal.getMovie1ArrayList();
 
         if(i1==1 || i1==3){
-             Toast.makeText(getActivity(), "swipe right on"+mCardAdapter.currentMovie.getMovietitle(), Toast.LENGTH_SHORT).show();
+            uploadLikedMovie();
+
+
+
         } else{
             Toast.makeText(getActivity(), "swipe left", Toast.LENGTH_SHORT).show();
         }
@@ -183,6 +228,46 @@ public class HomeFrag extends Fragment implements CardStack.CardEventListener{
 
             super.onPostExecute(movies);
         }
-    }
+
+
+
+        private String getimageExtention(Uri uri){
+            ContentResolver cr =getActivity().getContentResolver();
+            MimeTypeMap mime = MimeTypeMap.getSingleton();
+            return mime.getExtensionFromMimeType(cr.getType(uri));
+        }
 
     }
+
+    //uploader de film folk liker til deres eget depository
+    private FirebaseUser user;
+    private StorageReference mStorageRefLikedMovies;
+    private DatabaseReference mDatabaseRefLikedMovies;
+
+    private void uploadLikedMovie(){
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String userID = user.getUid();
+            Log.v("userness", userID);
+
+            mCardAdapter.currentMovie.getmTitle();
+
+            Toast.makeText(getActivity(), "swipe Right"+mCardAdapter.currentMovie.getmTitle(), Toast.LENGTH_SHORT).show();
+
+            mDatabaseRefLikedMovies= FirebaseDatabase.getInstance().getReference("LikedFilms/"+userID);
+
+            Uri uri=Uri.parse(mCardAdapter.currentMovie.getImageURi());
+
+            Log.v("Databasecheck", uri.toString());
+
+            Upload upload = mCardAdapter.currentMovie;
+            String uploadID = mDatabaseRefLikedMovies.push().getKey();
+            mDatabaseRefLikedMovies.child(uploadID).setValue(upload);
+            //createNewPost(imageUrl);
+
+    } else {
+
+        }
+
+    }}
