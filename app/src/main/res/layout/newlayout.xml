@@ -5,20 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="40dp"
-    android:background="@color/backlitcolor"
-    >
 
+    android:paddingVertical="2dp"
+
+    >
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:cardCornerRadius="10dp"
-        android:padding="5dp"
-        android:background="@color/backlitcolor"
 
+        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,16 +24,16 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="131dp"
+            android:layout_height="match_parent"
             android:padding="10dp"
-            android:background="@color/colorPrimary"
+            android:background="#000000"
             >
 
             <ImageView
                 android:id="@+id/likedpictureList"
-                android:layout_width="131dp"
-                android:layout_height="132dp"
-                android:padding="5dp"
+                android:layout_width="120dp"
+                android:layout_height="112dp"
+                android:paddingLeft="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/movietitleList"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -44,19 +42,20 @@
 
             <TextView
                 android:id="@+id/descriptionmovieList"
-                android:layout_width="156dp"
-                android:layout_height="42dp"
-                android:layout_marginEnd="172dp"
+                android:layout_width="141dp"
+                android:layout_height="34dp"
+                android:layout_marginBottom="8dp"
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/montserrat"
+                android:paddingLeft="3dp"
                 android:scaleType="centerCrop"
                 android:text="TextView"
-                android:textColor="@color/colorPrimary"
-                android:visibility="invisible"
+
+                android:textColor="@color/colorWhite"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/likedpictureList"
-                app:layout_constraintTop_toBottomOf="@+id/likedpictureList"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.271"
+                app:layout_constraintStart_toEndOf="@+id/likedpictureList" />
 
             <TextView
                 android:id="@+id/movietitleList"
@@ -66,14 +65,13 @@
                 android:fontFamily="@font/montserrat_bold"
                 android:scaleType="centerCrop"
                 android:text="TextView"
-
                 android:textColor="@color/colorWhite"
                 app:layout_constraintBottom_toBottomOf="@+id/likedpictureList"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.761"
+                app:layout_constraintHorizontal_bias="0.667"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.487" />
+                app:layout_constraintVertical_bias="0.264" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
