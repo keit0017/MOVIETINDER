@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFrag"
-    android:background="@color/black">
+    android:background="#000000">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,16 +15,19 @@
 
         <com.wenchao.cardstack.CardStack
             android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipChildren="false"
             android:clipToPadding="false"
             android:gravity="center"
-            app:card_enable_loop="true"
+
+            app:card_enable_loop="false"
             app:card_enable_rotation="true"
             app:card_margin="10dp"
             app:card_stack_size="5"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.454"

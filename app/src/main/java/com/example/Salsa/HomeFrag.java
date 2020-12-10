@@ -56,14 +56,17 @@ public class HomeFrag extends Fragment implements CardStack.CardEventListener{
 
 
 
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
     private CardStack mCardStack;
-    private CardAdapter mCardAdapter;
+    private CardAdapter mCardAdapter,Currentmovie;
 
     public static ArrayList<Movie> likedmovies= new ArrayList<>();
     public static ArrayList<Upload> movies= new ArrayList<>();
+    public static ArrayList<Upload> currentMov= new ArrayList<>();
+    private int index1;
 
 
     public HomeFrag() {
@@ -106,6 +109,8 @@ public class HomeFrag extends Fragment implements CardStack.CardEventListener{
             return null;
         }
 
+        index1=0;
+
 
 
         View v = inflater.inflate(R.layout.fragment_home, container, false);
@@ -125,7 +130,10 @@ public class HomeFrag extends Fragment implements CardStack.CardEventListener{
                     Log.v("Imageuploaded",upload.getImageURi());
                 }
 
+                currentMov=movies;
+
                 mCardStack.setAdapter(mCardAdapter);
+
                 mCardStack.setListener(HomeFrag.this);
 
             }
@@ -199,14 +207,16 @@ public class HomeFrag extends Fragment implements CardStack.CardEventListener{
     public void discarded(int i, int i1) {
         Log.v("test", "pikimund");
 
-
         if(i1==1 || i1==3){
             uploadLikedMovie();
 
-
-
         } else{
             Toast.makeText(getActivity(), "swipe left", Toast.LENGTH_SHORT).show();
+            //sørger for at den tæller ned regardless
+
+            if(currentMov.size()>index1){
+                index1++;
+            }
         }
     }
 
@@ -244,29 +254,36 @@ public class HomeFrag extends Fragment implements CardStack.CardEventListener{
     private StorageReference mStorageRefLikedMovies;
     private DatabaseReference mDatabaseRefLikedMovies;
 
+
     private void uploadLikedMovie(){
+        int arraylenghth;
+
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             String userID = user.getUid();
             Log.v("userness", userID);
+           // mCardAdapter..getmTitle();
 
-            mCardAdapter.currentMovie.getmTitle();
-
-            Toast.makeText(getActivity(), "swipe Right"+mCardAdapter.currentMovie.getmTitle(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "swipe Right"+currentMov.get(index1).getmTitle(), Toast.LENGTH_SHORT).show();
 
             mDatabaseRefLikedMovies= FirebaseDatabase.getInstance().getReference("LikedFilms/"+userID);
 
-            Uri uri=Uri.parse(mCardAdapter.currentMovie.getImageURi());
+            Uri uri=Uri.parse(currentMov.get(index1).getImageURi());
 
             Log.v("Databasecheck", uri.toString());
 
-            Upload upload = mCardAdapter.currentMovie;
-            String uploadID = mDatabaseRefLikedMovies.push().getKey();
-            mDatabaseRefLikedMovies.child(uploadID).setValue(upload);
+            Upload upload = currentMov.get(index1);
+            //String uploadID = mDatabaseRefLikedMovies.push().getKey();
+            mDatabaseRefLikedMovies.child(currentMov.get(index1).getmTitle()).setValue(upload);
             //createNewPost(imageUrl);
 
+            if(currentMov.size()>index1){
+                index1++;
+            }
+
     } else {
+
 
         }
 

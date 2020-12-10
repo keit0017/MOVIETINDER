@@ -19,7 +19,10 @@ import java.util.ArrayList;
 public class CardAdapter extends ArrayAdapter<Upload> {
     private Context mContext;
     private ArrayList<Upload> moviesList = new ArrayList<>();
-    public Upload currentMovie;
+    Upload moviesCurrent= new Upload();
+
+
+
 
 
     public CardAdapter(Context context, ArrayList<Upload> list) {
@@ -34,17 +37,13 @@ public class CardAdapter extends ArrayAdapter<Upload> {
     public View getView(int position, View convertView, ViewGroup parent) {
         View listItem = convertView;
         Movieholder holder = null;
-        Upload movie = getItem(position);
+        Upload currentMovie= getItem(position) ;
+        moviesCurrent=currentMovie;
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.card_layout, parent, false);
-
-
             convertView.setTag(holder);
-
         }
-         currentMovie = getItem(position);
-
 
         TextView moviedescription = (TextView) convertView.findViewById(R.id.moviedescription);
         TextView movietitle = (TextView) convertView.findViewById(R.id.movietitle);
@@ -60,6 +59,9 @@ public class CardAdapter extends ArrayAdapter<Upload> {
         return convertView;
     }
 
+    public Upload getMoviesCurrent() {
+        return moviesCurrent;
+    }
 
     static class Movieholder
     {

@@ -27,6 +27,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="131dp"
+            android:padding="10dp"
             android:background="@color/colorPrimary"
             >
 
@@ -55,7 +56,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/likedpictureList"
                 app:layout_constraintTop_toBottomOf="@+id/likedpictureList"
-                app:layout_constraintVertical_bias="0.82" />
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/movietitleList"
