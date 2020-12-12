@@ -31,13 +31,14 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link AddnewFrag#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AddnewFrag extends Fragment {
+public class AddnewFrag extends Fragment  {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -52,7 +53,10 @@ public class AddnewFrag extends Fragment {
     RecyclerView likedmoviesview;
     private FirebaseUser user;
     private DatabaseReference mDatabaseRefLikedMovies;
+    private ValueEventListener mValulistener;
     private LikedMoviesAdapter mCardAdapter;
+
+
     GlovVal globalmovie = GlovVal.getInstance();
 
     public AddnewFrag() {
@@ -107,19 +111,20 @@ public class AddnewFrag extends Fragment {
 
         String userID = user.getUid();
 
+        mCardAdapter = new LikedMoviesAdapter(currentContext,mLikedmoviesList);
+        likedmoviesview.setAdapter(mCardAdapter);
         mDatabaseRefLikedMovies= FirebaseDatabase.getInstance().getReference("LikedFilms/"+userID);
 
-        mDatabaseRefLikedMovies.addValueEventListener(new ValueEventListener() {
+        mValulistener = mDatabaseRefLikedMovies.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    mLikedmoviesList.clear();
                     for(DataSnapshot snapshot1 : snapshot.getChildren()){
                         Upload upload = snapshot1.getValue(Upload.class);
                         mLikedmoviesList.add(upload);
                         Log.v("Imageuploaded",upload.getImageURi());
                     }
-                    mCardAdapter = new LikedMoviesAdapter(currentContext,mLikedmoviesList);
-                    likedmoviesview.setAdapter(mCardAdapter);
-
+                    mCardAdapter.notifyDataSetChanged();
                 }
 
                 @Override
@@ -127,13 +132,47 @@ public class AddnewFrag extends Fragment {
                     Toast.makeText(getActivity(),error.getMessage(),Toast.LENGTH_LONG).show();;
                 }
             });
+
+        //listener
+        mCardAdapter.setOnItemClickListener(new LikedMoviesAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Toast.makeText(getActivity(), "Good way of working", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onWhatMenuItem(int position) {
+
+            }
+
+            @Override
+            public void onDeleteclick(int position) {
+                user = FirebaseAuth.getInstance().getCurrentUser();
+
+                String userID = user.getUid();
+                Upload selctedfilm = mLikedmoviesList.get(position);
+                final String DeleteKey = selctedfilm.getmTitle();
+
+                mDatabaseRefLikedMovies.child(DeleteKey).removeValue();
+                Toast.makeText(getActivity(), selctedfilm.getmTitle()+" Was deleted :/", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         return v;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mDatabaseRefLikedMovies.removeEventListener(mValulistener);
+    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
     }
+
+
 }
