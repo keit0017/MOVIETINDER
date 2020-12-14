@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:padding="5dp"
+        android:paddingVertical="10dp"
+        android:background="@drawable/roundedbutton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.widget.LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_root"
+            android:padding="10dp"
+            android:clickable="true"
+            android:layout_marginVertical="20sp"
+            android:background="@color/colorWhite"
+            android:focusable="true"
+            android:orientation="vertical"
+
+
+            >
+
+            <TextView
+                android:id="@+id/mUsernameText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/montserrat_bold"
+                android:paddingLeft="30sp"
+                android:autoSizeMinTextSize="10dp"
+                android:scaleType="centerCrop"
+                android:text="TextView"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/mCommentText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="15dp"
+                android:fontFamily="@font/montserrat"
+                android:scaleType="centerCrop"
+                android:paddingHorizontal="30sp"
+                android:text="TextView"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/mDatetask2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:paddingHorizontal="30sp"
+               android:textSize="12dp"
+                android:textAlignment="center"
+                android:text="TextView"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mCommentText2"
+                tools:layout_editor_absoluteX="16dp" />
+
+        </android.widget.LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+

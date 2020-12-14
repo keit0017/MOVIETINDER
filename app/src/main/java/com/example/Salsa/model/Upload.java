@@ -3,9 +3,11 @@ package com.example.Salsa.model;
 import android.media.Image;
 import android.widget.ImageView;
 
+import com.google.firebase.database.Exclude;
+
 public class Upload {
 
-    private String mTitle,mDescription,ImageURi1;
+    private String mTitle,mDescription,ImageURi1,mKey;
 
     public Upload(){
 
@@ -37,6 +39,11 @@ public class Upload {
         return mTitle;
     }
 
+    @Exclude
+    public String getmKey() {
+        return mKey;
+    }
+
     public String getUrl(){ return getImageURi().toString();}
 
     public void setImageURi(String imageURi) {
@@ -49,5 +56,10 @@ public class Upload {
 
     public void setmTitle(String mTitle) {
         this.mTitle = mTitle;
+    }
+
+    @Exclude
+    public void setmKey(String mKey) {
+        this.mKey = mKey;
     }
 }

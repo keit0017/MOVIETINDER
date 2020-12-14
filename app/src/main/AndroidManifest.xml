@@ -14,18 +14,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ReviewskaermAktivitet"></activity>
-        <activity android:name=".ChatAkt" />
-        <activity android:name=".AddFilmActivity" />
-        <activity android:name=".RegisterAkt" />
-        <activity android:name=".LoginAkt">
+        <activity android:name=".Aktiviteter.ReviewskaermAktivitet"></activity>
+        <activity android:name=".Aktiviteter.ChatAkt" />
+        <activity android:name=".Aktiviteter.AddFilmActivity" />
+        <activity android:name=".Aktiviteter.RegisterAkt" />
+        <activity android:name=".Aktiviteter.LoginAkt">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Aktiviteter.MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -1,7 +1,6 @@
-package com.example.Salsa;
+package com.example.Salsa.controllere;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.example.Salsa.model.Movie;
+import com.example.Salsa.R;
 import com.example.Salsa.model.Upload;
 import com.squareup.picasso.Picasso;
 

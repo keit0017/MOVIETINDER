@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/home2"
-        android:name="com.example.Salsa.HomeFrag"
+        android:name="com.example.Salsa.Fragmenter.HomeFrag"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/settings"
-        android:name="com.example.Salsa.SettingsFrag"
+        android:name="com.example.Salsa.Fragmenter.SettingsFrag"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/addnew"
-        android:name="com.example.Salsa.AddnewFrag"
+        android:name="com.example.Salsa.Fragmenter.AddnewFrag"
         android:label="fragment_addnew"
         tools:layout="@layout/fragment_addnew" />
 </navigation>

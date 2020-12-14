@@ -1,6 +1,7 @@
-package com.example.Salsa;
+package com.example.Salsa.Fragmenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,11 +15,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.Salsa.Aktiviteter.MainActivity;
+import com.example.Salsa.R;
+import com.example.Salsa.Aktiviteter.ReviewskaermAktivitet;
+import com.example.Salsa.controllere.LikedMoviesAdapter;
 import com.example.Salsa.model.GlovVal;
-import com.example.Salsa.model.Movie;
 import com.example.Salsa.model.Upload;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,7 +30,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,8 @@ public class AddnewFrag extends Fragment  {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private Button signout,deleteaccount;
+
+    public static int currentPosition;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -79,6 +83,8 @@ public class AddnewFrag extends Fragment  {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
 
+        int superPosition=0;
+
         return fragment;
     }
 
@@ -89,6 +95,7 @@ public class AddnewFrag extends Fragment  {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        ((MainActivity) Objects.requireNonNull(getActivity())).updateStatusBarColor("#202120");
     }
 
     @Override
@@ -112,6 +119,7 @@ public class AddnewFrag extends Fragment  {
         String userID = user.getUid();
 
         mCardAdapter = new LikedMoviesAdapter(currentContext,mLikedmoviesList);
+
         likedmoviesview.setAdapter(mCardAdapter);
         mDatabaseRefLikedMovies= FirebaseDatabase.getInstance().getReference("LikedFilms/"+userID);
 
@@ -124,7 +132,7 @@ public class AddnewFrag extends Fragment  {
                         mLikedmoviesList.add(upload);
                         Log.v("Imageuploaded",upload.getImageURi());
                     }
-                    mCardAdapter.notifyDataSetChanged();
+                    likedmoviesview.setAdapter(mCardAdapter);
                 }
 
                 @Override
@@ -137,7 +145,13 @@ public class AddnewFrag extends Fragment  {
         mCardAdapter.setOnItemClickListener(new LikedMoviesAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(getActivity(), "Good way of working", Toast.LENGTH_SHORT).show();
+
+                currentPosition =position;
+                Intent intent = new Intent(getActivity(), ReviewskaermAktivitet.class);
+                intent.putExtra("cmTitle",getcurrentMOvie().getmTitle());
+                intent.putExtra("cmDesc",getcurrentMOvie().getmDescription());
+                intent.putExtra("cmImg",getcurrentMOvie().getImageURi());
+                getActivity().startActivity(intent);
             }
 
             @Override
@@ -156,6 +170,7 @@ public class AddnewFrag extends Fragment  {
                 mDatabaseRefLikedMovies.child(DeleteKey).removeValue();
                 Toast.makeText(getActivity(), selctedfilm.getmTitle()+" Was deleted :/", Toast.LENGTH_SHORT).show();
 
+
             }
         });
 
@@ -165,7 +180,7 @@ public class AddnewFrag extends Fragment  {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mDatabaseRefLikedMovies.removeEventListener(mValulistener);
+
     }
 
     @Override
@@ -174,5 +189,8 @@ public class AddnewFrag extends Fragment  {
 
     }
 
-
+    public Upload getcurrentMOvie() {
+        int postion;
+        return mLikedmoviesList.get(currentPosition);
+    }
 }

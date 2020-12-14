@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsFrag"
+    tools:context=".Fragmenter.SettingsFrag"
     android:background="@color/black">
 
     <!-- TODO: Update blank fragment layout -->
@@ -52,28 +52,19 @@
             app:layout_constraintVertical_bias="0.0">
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/UserTextIntro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="View profile"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:maxLength="150"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.821" />
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="65dp"
-                android:layout_height="56dp"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.406"
-                tools:src="@tools:sample/avatars" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -84,6 +75,7 @@
             android:textColor="@color/colorWhite"
             android:textSize="18dp"
             android:visibility="gone"
+            android:maxLength="150"
             app:layout_constraintBottom_toTopOf="@+id/signout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.504"

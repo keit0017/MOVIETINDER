@@ -1,4 +1,4 @@
-package com.example.Salsa;
+package com.example.Salsa.Fragmenter;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.Salsa.Aktiviteter.AddFilmActivity;
+import com.example.Salsa.Aktiviteter.MainActivity;
+import com.example.Salsa.R;
 import com.example.Salsa.model.Movie;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,7 +36,10 @@ public class SettingsFrag extends Fragment {
     private String mParam1;
     private String mParam2;
     Button signout,mMoveIn;
+    TextView welcomeUser;
+    private FirebaseUser user;
     Movie setMovie;
+
 
     public SettingsFrag() {
         // Required empty public constructor
@@ -60,6 +70,7 @@ public class SettingsFrag extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        ((MainActivity) Objects.requireNonNull(getActivity())).updateStatusBarColor("#fc9503");
 
 
     }
@@ -71,6 +82,8 @@ public class SettingsFrag extends Fragment {
         // Inflate the layout for this fragment
         signout = (Button) rootview.findViewById(R.id.signout);
         mMoveIn = (Button) rootview.findViewById(R.id.AddMovieActivityopen);
+        welcomeUser= (TextView) rootview.findViewById(R.id.UserTextIntro);
+        getuserid();
 
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,5 +103,13 @@ public class SettingsFrag extends Fragment {
 
 
         return rootview;
+    }
+
+    private void getuserid(){
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        String userID = user.getEmail();
+        String username = userID.split("@")[0];
+        welcomeUser.setText("welcome back "+username+" :)");
+
     }
 }

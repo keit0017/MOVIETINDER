@@ -1,14 +1,16 @@
-package com.example.Salsa;
+package com.example.Salsa.Aktiviteter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ReviewskaermAktivitet extends AppCompatActivity {
+import com.example.Salsa.R;
+
+public class ChatAkt extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reviewskaerm_aktivitet);
+        setContentView(R.layout.activity_chat_akt);
     }
 }

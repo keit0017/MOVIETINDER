@@ -1,4 +1,4 @@
-package com.example.Salsa;
+package com.example.Salsa.Aktiviteter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.Salsa.R;
 import com.example.Salsa.model.GlovVal;
 import com.example.Salsa.model.Movie;
 import com.google.android.gms.tasks.OnCompleteListener;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddFilmActivity"
+    tools:context=".Aktiviteter.AddFilmActivity"
     android:background="@color/black">
 
     <Button
@@ -42,9 +42,10 @@
         android:layout_marginBottom="128dp"
         android:background="@color/colorWhite"
         android:ems="10"
+        android:maxLength="40"
         android:fontFamily="@font/montserrat"
         android:gravity="start|top"
-        android:hint="Beskriv filmen"
+        android:hint="Describe your movie"
         android:inputType="textMultiLine"
         android:padding="16dip"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,8 +61,9 @@
         android:layout_marginTop="76dp"
         android:background="@drawable/roundend"
         android:ems="10"
+        android:maxLength="20"
         android:fontFamily="@font/montserrat"
-        android:hint="Film titel"
+        android:hint="Title of the movie"
         android:inputType="textPersonName"
         android:padding="16dip"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -113,10 +115,11 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="26dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Tilføj film"
+        android:text="Add a movie"
+        android:paddingHorizontal="20dp"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="@+id/MovieposterUpload"
         app:layout_constraintEnd_toEndOf="parent"

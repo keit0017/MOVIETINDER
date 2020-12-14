@@ -1,4 +1,4 @@
-package com.example.Salsa;
+package com.example.Salsa.Aktiviteter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -7,14 +7,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.*;
 
+import com.example.Salsa.R;
 import com.example.Salsa.model.Upload;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -56,6 +62,9 @@ public class AddFilmActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_film);
+        updateStatusBarColor("#202120");
+
+
 
         //Finding matching buttons
         mButtonChooseImage=findViewById(R.id.choosefilebutton);
@@ -65,6 +74,8 @@ public class AddFilmActivity extends AppCompatActivity {
         mEditmovietitle=findViewById(R.id.editmovietitle);
         mDisplayImage=findViewById(R.id.MovieposterUpload);
         mprogressbar=findViewById(R.id.progressBar3Uploadingmovie);
+
+
 
         //firebase connection
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
@@ -82,7 +93,6 @@ public class AddFilmActivity extends AppCompatActivity {
         mButtonUploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ;
 
                 if(mUploadTask != null && mUploadTask.isInProgress()){
                     Log.i("button", "upload button connected");
@@ -153,9 +163,6 @@ public class AddFilmActivity extends AppCompatActivity {
                                 }
                             }
 
-
-
-
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -183,6 +190,14 @@ public class AddFilmActivity extends AppCompatActivity {
         if(requestCode==PICK_IMAGE_REQUEST && resultCode==RESULT_OK && data!= null && data.getData() != null){
             mImageURI = data.getData();
             Picasso.with(this).load(mImageURI).into(mDisplayImage);
+        }
+    }
+
+    public void updateStatusBarColor(String color){// Color must be in hexadecimal fromat
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.parseColor(color));
         }
     }
 
